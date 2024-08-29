@@ -64,7 +64,11 @@ case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
 
-GIT_PS1_SHOWDIRTYSTATE=1
+export CLICOLOR=1
+[ -f /etc/bash_completion.d/git-prompt ] && . /etc/bash_completion.d/git-prompt
+export GIT_PS1_SHOWCOLORHINTS=1
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUPSTREAM="auto"
 
 PROMPT_COMMAND="echo; $PROMPT_COMMAND"
 
@@ -150,16 +154,17 @@ if ! shopt -oq posix; then
 fi
 
 # Set up SSH auth socket and load keys
-if [ -x /usr/bin/ssh-agent ]; then
-    if [ ! -S "${HOME}/.ssh/ssh_auth_sock" ]; then
-        eval $(/usr/bin/ssh-agent)
-        ln -sf "${SSH_AUTH_SOCK}" "${HOME}/.ssh/ssh_auth_sock"
-    fi
+if type -P ssh-agent &>/dev/null; then
+    [ -z "${SSH_AUTH_SOCK}" ] && eval $(ssh-agent)
+    [ -S "${HOME}/.ssh/ssh_auth_sock" ] || ln -sf "${SSH_AUTH_SOCK}" "${HOME}/.ssh/ssh_auth_sock"
     loaded_keys=$(ssh-add -l)
     for keyfile in "${HOME}/.ssh/id_{rsa,dsa,ecdsa,ed25519}"; do
-        fingerprint=$(ssh-keygen -l -f "${keyfile}" | cut -d ' ' -f2 | sed -e 's/\([/+]\)/\\\1/g')
-        echo "${loaded_keys}" | egrep -q "${fingerprint}" || ssh-add "${keyfile}"
+        [ -r "${keyfile}" ] && (  
+            fingerprint=$(ssh-keygen -l -f "${keyfile}" | cut -d ' ' -f2 | sed -e 's/\([/+]\)/\\\1/g')
+            echo "${loaded_keys}" | egrep -q "${fingerprint}" || ssh-add "${keyfile}"
+	)
     done
+    unset loaded_keys keyfile
 fi
 
 export PROCPS_FROMLEN=36
