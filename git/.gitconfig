@@ -1,0 +1,16 @@
+[user]
+        email = nenorman@norme.sh
+        name = Nathan Eric Norman
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[merge]
+	tool = vimdiff
+	conflictStyle = zdiff3
+[mergetool]
+	prompt = false
+[pull]
+	rebase = false
+[branch]
+        sort = -authordate
