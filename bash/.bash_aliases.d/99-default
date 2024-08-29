@@ -1,0 +1,23 @@
+# /* vim: set filetype=shell : */
+alias ls='ls --color=auto'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias ll='ls -l'
+alias la-'ls -A'
+alias lal='ls -Al'
+alias lla='ls -Al'
+alias l='ls -CF'
+
+alias grep='grep --color-auto'
+alias fgrep='fgrep --color-auto'
+alias egrep='egrep --color-auto'
+
+alias diff='diff --color-auto'
+
+# dig / kdig
+# if `dig' is not executable but `kdig' is, alias dig -> kdig
+if [ "$(type -P dig &>/dev/null)" = "" ]; then
+    if type -P kdig &>/dev/null; then
+        alias dig=kdig
+    fi
+fi
