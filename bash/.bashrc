@@ -169,3 +169,5 @@ fi
 
 export PROCPS_FROMLEN=36
 
+# dotfiles sort first; don't be a heathen
+export LC_COLLATE=C
