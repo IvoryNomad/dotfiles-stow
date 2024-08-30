@@ -21,3 +21,5 @@ if [ "$(type -P dig &>/dev/null)" = "" ]; then
         alias dig=kdig
     fi
 fi
+
+alias bc='bc -l ~/.bc/*.bc'
