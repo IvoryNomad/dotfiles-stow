@@ -1,0 +1,7 @@
+define deg_to_rad(d) {
+  return  (d*(2*pi()))/360
+}
+
+define rad_to_deg(r) {
+  return (360*r)/(2*pi())
+}
