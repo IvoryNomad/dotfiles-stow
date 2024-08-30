@@ -14,3 +14,9 @@
 	rebase = false
 [branch]
         sort = -authordate
+[init]
+	defaultbranch = main
+[commit]
+	template = ~/.gitcommit-template
+[core]
+	editor = vim
