@@ -1,7 +1,15 @@
+#!/usr/bin/env bc -l
+
+### geometry.bc - some functions to help with geometry problems
+
+## NB: depends on pi being defined; this can be done by including funcs.bc
+
+# convert degrees to radians
 define deg_to_rad(d) {
   return  (d*(2*pi()))/360
 }
 
+# convert radians to degrees
 define rad_to_deg(r) {
   return (360*r)/(2*pi())
 }
