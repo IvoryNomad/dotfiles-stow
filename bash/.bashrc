@@ -153,19 +153,19 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Set up SSH auth socket and load keys
-if type -P ssh-agent &>/dev/null; then
-    [ -z "${SSH_AUTH_SOCK}" ] && eval $(ssh-agent)
-    [ -S "${HOME}"/.ssh/ssh_auth_sock ] || ln -sf "${SSH_AUTH_SOCK}" "${HOME}"/.ssh/ssh_auth_sock
-    loaded_keys=$(ssh-add -l) || loaded_keys=''
-    for keyfile in "${HOME}"/.ssh/id_{rsa,dsa,ecdsa,ed25519}; do
-        [ -r "${keyfile}" ] && (
-            fingerprint=$(ssh-keygen -l -f "${keyfile}" | cut -d ' ' -f2 | sed -e 's/\([/+]\)/\\\1/g')
-            echo "${loaded_keys}" | egrep -q "${fingerprint}" || ssh-add "${keyfile}"
-        )
-    done
-    unset loaded_keys keyfile
-fi
+# # Set up SSH auth socket and load keys
+# if type -P ssh-agent &>/dev/null; then
+#     [ -z "${SSH_AUTH_SOCK}" ] && eval $(ssh-agent)
+#     [ -S "${HOME}"/.ssh/ssh_auth_sock ] || ln -sf "${SSH_AUTH_SOCK}" "${HOME}"/.ssh/ssh_auth_sock
+#     loaded_keys=$(ssh-add -l) || loaded_keys=''
+#     for keyfile in "${HOME}"/.ssh/id_{rsa,dsa,ecdsa,ed25519}; do
+#         [ -r "${keyfile}" ] && (
+#             fingerprint=$(ssh-keygen -l -f "${keyfile}" | cut -d ' ' -f2 | sed -e 's/\([/+]\)/\\\1/g')
+#             echo "${loaded_keys}" | egrep -q "${fingerprint}" || ssh-add "${keyfile}"
+#         )
+#     done
+#     unset loaded_keys keyfile
+# fi
 
 export PROCPS_FROMLEN=36
 
