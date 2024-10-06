@@ -1,0 +1,1 @@
+alias deb-update='sudo sh -c "apt-get update && apt-get upgrade --assume-yes --with-new-pkgs && apt-get autoremove --assume-yes"'
