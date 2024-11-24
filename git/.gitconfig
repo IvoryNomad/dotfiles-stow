@@ -15,8 +15,8 @@
 [branch]
         sort = -authordate
 [init]
-	defaultbranch = main
+	defaultbranch = master
 [commit]
 	template = ~/.gitcommit-template
 [core]
-	editor = vim
+	editor = nvim
