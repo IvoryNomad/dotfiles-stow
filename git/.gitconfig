@@ -1,6 +1,7 @@
 [user]
         email = nenorman@norme.sh
         name = Nathan Eric Norman
+	signingkey = 49223C4B19DD2B68
 [diff]
 	tool = vimdiff
 [difftool]
@@ -18,5 +19,6 @@
 	defaultbranch = master
 [commit]
 	template = ~/.gitcommit-template
+	gpgsign = true
 [core]
 	editor = nvim
