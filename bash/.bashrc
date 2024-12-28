@@ -153,6 +153,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Set up SSH auth socket
+if [ -S "${XDG_RUNTIME_DIR}/ssh-agent.socket" ]; then
+    export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi
+
 # # Set up SSH auth socket and load keys
 # if type -P ssh-agent &>/dev/null; then
 #     [ -z "${SSH_AUTH_SOCK}" ] && eval $(ssh-agent)
