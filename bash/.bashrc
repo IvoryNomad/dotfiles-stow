@@ -177,4 +177,8 @@ export PROCPS_FROMLEN=36
 # dotfiles sort first; don't be a heathen
 export LC_COLLATE=C
 
+# need to set GPG_TTY or gpg signed git commits will explode
+# No harm in setting this on systems that don't have gpg installed
+export GPG_TTY=$(tty)
+
 [ -f "${HOME}/.bashrc.local" ] && . "${HOME}/.bashrc.local"
