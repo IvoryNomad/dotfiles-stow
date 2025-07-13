@@ -1,7 +1,7 @@
 [user]
         email = nenorman@norme.sh
         name = Nathan Eric Norman
-	signingkey = 49223C4B19DD2B68
+	signingkey = D9E7ED161EBA60BFE27DB75B689096A69D2C0129
 [diff]
 	tool = vimdiff
 [difftool]
