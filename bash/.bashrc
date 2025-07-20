@@ -182,3 +182,8 @@ export LC_COLLATE=C
 export GPG_TTY=$(tty)
 
 [ -f "${HOME}/.bashrc.local" ] && . "${HOME}/.bashrc.local"
+
+# remove shell flow control as it's annoying AF
+stty -ixon
+bind -r "\C-s"
+bind -r "\C-q"
