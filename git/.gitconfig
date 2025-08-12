@@ -1,24 +1,24 @@
 [user]
-    email = nenorman@norme.sh
-    name = Nathan Eric Norman
-    signingkey = D9E7ED161EBA60BFE27DB75B689096A69D2C0129
+	email = nenorman@norme.sh
+	name = Nathan Eric Norman
+	signingkey = D9E7ED161EBA60BFE27DB75B689096A69D2C0129
 [diff]
-    tool = vimdiff
+	tool = vimdiff
 [difftool]
-    prompt = false
+	prompt = false
 [merge]
-    tool = vimdiff
-    conflictStyle = zdiff3
+	tool = vimdiff
+	conflictStyle = zdiff3
 [mergetool]
-    prompt = false
+	prompt = false
 [pull]
-    rebase = false
+	rebase = true
 [branch]
-    sort = -authordate
+	sort = -authordate
 [init]
-    defaultbranch = master
+	defaultbranch = master
 [commit]
-    template = ~/.gitcommit-template
-    gpgsign = true
+	template = ~/.gitcommit-template
+	gpgsign = true
 [core]
-    editor = nvim
+	editor = nvim
